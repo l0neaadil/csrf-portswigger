@@ -1,7 +1,6 @@
-## CSRF vulnerability with no defenses
+## CSRF vulnerability with no defenses [Lab 1](https://portswigger.net/web-security/csrf/lab-no-defenses)
 
-[Lab 1](https://portswigger.net/web-security/csrf/lab-no-defenses)
-
+**Key Points:**
 
 Vulnerable parameter - email change functionality
 
@@ -12,7 +11,7 @@ credentials - wiener:peter
 Analysis:
 
 In order for a CSRF attack to be possible:
-- A relevant action - email change functionality - [x]
-- Cookie based session handling - session cookie - [x]
-- No unpredictable request parameters - satisfied - [x]
+- [x] A relevant action - email change functionality
+- [x] Cookie based session handling - session cookie
+- [ ] No unpredictable request parameters - satisfied
 
